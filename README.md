@@ -7,9 +7,12 @@ This is a mutli-factor testing framework.
 * Sample size:
   TBD
 
-
-
-python3 -m venv virenv
-echo 'virenv' > .gitignore
-
 Copyright (2020/11): Qi Sun
+
+Processures: 
+python3 -m venv virenv 
+echo 'virenv' > .gitignore 
+source ./virenv/bin/activate 
+deactivate 
+pip3 install pandas matplotlib PyPortfolioOpt 
+pip3 freeze > requirements.txt 
