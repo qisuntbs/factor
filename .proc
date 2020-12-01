@@ -1,0 +1,8 @@
+Processures:
+python3 -m venv virenv
+echo 'virenv' > .gitignore
+echo '*~' > .gitignore
+source ./virenv/bin/activate
+deactivate
+pip3 install pandas matplotlib PyPortfolioOpt
+pip3 freeze > requirements.txt

@@ -1,18 +1,6 @@
 This is a mutli-factor testing framework.
 
-* Dependencies:
-  Pyportopt
-  Pandas
-
-* Sample size:
-  TBD
+1. Need to get the price and fundamental data  
+2. Write proper functions/classes to plug into this framework  
 
 Copyright (2020/11): Qi Sun
-
-Processures:  
-python3 -m venv virenv  
-echo 'virenv' > .gitignore  
-source ./virenv/bin/activate  
-deactivate  
-pip3 install pandas matplotlib PyPortfolioOpt  
-pip3 freeze > requirements.txt  
