@@ -3,4 +3,4 @@ virenv
 tests
 *pdf
 __pycache__
-*.json
+var_desc.json
