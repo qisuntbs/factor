@@ -1,2 +1,5 @@
 virenv
 *~
+tests
+*pdf
+__pycache__
