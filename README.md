@@ -1,8 +1,8 @@
 This is a mutli-factor testing framework.
 
 1. Need to get the price and fundamental data  
-   * Where?  
-   * Time-Span
+   * what data and what time-span
+   * mlfactor as testing sample
 2. Write proper functions/classes to plug into this framework  
 3. Single factor testing enviorment  
 4. Multi-factor backtesting API  

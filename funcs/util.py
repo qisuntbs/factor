@@ -1,16 +1,48 @@
 # this file collects a range of uitility functions this multi-factor framework needs
 
 import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
 
 
 class util():
     @staticmethod
     def plot(x, y, file_name='default'):
-        assert ((type(x) == list) & (type(x) == list)), "Plot inputs have to be lists"
+        assert ((type(x) == list) & (type(x) == list)), "Plot inputs have to be lists" 
         assert (len(x) == len(y)), "x-axis & y-axis need to be equally numbered"
         # plot to pdf file:
         f = plt.figure()
         plt.plot(x, y, 'o')
         f.savefig("./plots/" + file_name + ".pdf", bbox_inches="tight")
-    
-        
+
+    @staticmethod
+    def data_to_panel(df):
+        import time
+        # this is the funciton to reshape the original data
+        # to a date * ret 2D panel
+        assert (('date' in df.columns) & ('ret' in df.columns)), "Need date and ret"
+        date_list = list(set(df['date']))
+        date_list.sort()
+        stock_list = list(set(df['stock_id']))
+        stock_list.sort()
+
+        # # small sample:
+        # date_list = date_list[:10]
+        # stock_list = stock_list[:10]
+
+        out = pd.DataFrame(np.nan, index=date_list,
+                           columns=stock_list)
+        t = time.time()
+        # TODO: debug here:
+        for i in range(len(date_list)):
+            for j in range(len(stock_list)):
+                inter = df.loc[(df['date'] == date_list[i]) &
+                               (df['stock_id'] == stock_list[j])]
+                if len(inter) == 1:
+                    out.at[date_list[i], stock_list[j]] = inter['ret'].iloc[0]
+                else:
+                    assert (len(inter) < 2), "Fatal Error in funcs.util.util"
+        out.to_csv('./tests/ret.csv')
+        print(out)
+        print(time.time() - t, 'seconds taken for data_to_panel')
+        return out
