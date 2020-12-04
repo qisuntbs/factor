@@ -1,5 +1,6 @@
 # this file collects a range of uitility functions this multi-factor framework needs
 
+import os.path
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
@@ -16,8 +17,7 @@ class util():
         f.savefig("./plots/" + file_name + ".pdf", bbox_inches="tight")
 
     @staticmethod
-    def data_to_panel(df):
-        import time
+    def data_to_panel(df, file_addr=None):
         # this is the funciton to reshape the original data
         # to a date * ret 2D panel
         assert (('date' in df.columns) & ('ret' in df.columns)), "Need date and ret"
@@ -26,23 +26,20 @@ class util():
         stock_list = list(set(df['stock_id']))
         stock_list.sort()
 
-        # # small sample:
-        # date_list = date_list[:10]
-        # stock_list = stock_list[:10]
-
-        out = pd.DataFrame(np.nan, index=date_list,
-                           columns=stock_list)
-        t = time.time()
-        # TODO: debug here:
-        for i in range(len(date_list)):
-            for j in range(len(stock_list)):
-                inter = df.loc[(df['date'] == date_list[i]) &
-                               (df['stock_id'] == stock_list[j])]
-                if len(inter) == 1:
-                    out.at[date_list[i], stock_list[j]] = inter['ret'].iloc[0]
-                else:
-                    assert (len(inter) < 2), "Fatal Error in funcs.util.util"
-        out.to_csv('./tests/ret.csv')
-        print(out)
-        print(time.time() - t, 'seconds taken for data_to_panel')
+        if os.path.exists(file_addr):
+            out = pd.read_csv(file_addr)
+        else:
+            # Extremely slow - 2500 seconds taken
+            out = pd.DataFrame(np.nan, index=date_list,
+                               columns=stock_list)
+            for i in range(len(date_list)):
+                for j in range(len(stock_list)):
+                    inter = df.loc[(df['date'] == date_list[i]) &
+                                   (df['stock_id'] == stock_list[j])]
+                    if len(inter) == 1:
+                        out.at[date_list[i], stock_list[j]] = inter['ret'].iloc[0]
+                    else:
+                        assert (len(inter) < 2), "Fatal Error in funcs.util.util"
+            # trying Cython:
+            out.to_csv(file_addr)
         return out
