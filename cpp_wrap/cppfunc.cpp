@@ -1,4 +1,5 @@
-#include "./read_csv.h"
+#include "./cppfunc.h"
+#include <math.h>
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -8,23 +9,22 @@
 
 using namespace std;
 
-table::table(){
+cppfunc::cppfunc(){
   // if you want wrap this into python
   // there should be no contents here by default
   // cerr << "ERROR: Make sure you have the right file name!" << endl;
   // exit(2);
 }
 
-table::table(string file_name){
-  this->file_name = file_name;
-  this->data = data_as_string(file_name);
-  // cout << data[0][0] << endl;
-  // cout << data.size() << " lines of data" << endl;
-}
+// we don't need this constructor as 
+// the main the purpose is to import cpp functions/methods:
+// cppfunc::cppfunc(string file_name){
+//   this->file_name = file_name;
+// }
 
-table::~table (){ }
+cppfunc::~cppfunc (){ }
 
-vector <vector <string> > table::data_as_string(string file_name)
+vector <vector <string> > cppfunc::data_as_string(string file_name)
   {
   vector <vector <string> > data;
   ifstream infile( file_name );
@@ -52,7 +52,7 @@ vector <vector <string> > table::data_as_string(string file_name)
 }
 
 
-vector <vector <double> > table::data_as_double(string file_name)
+vector <vector <double> > cppfunc::data_as_double(string file_name)
   {
   vector <vector <double> > data;
   ifstream infile( file_name );
@@ -66,7 +66,9 @@ vector <vector <double> > table::data_as_double(string file_name)
 	{
 	  string s;
 	  if (!getline( ss, s, ',' )) break;
-	  record.push_back( stod(s) );
+	  if (is_number(s)) {
+	    record.push_back( stod(s) );}
+	  else record.push_back( NAN );  // math.h
 	}
       data.push_back( record );
     }
@@ -77,4 +79,13 @@ vector <vector <double> > table::data_as_double(string file_name)
       exit(2);
     }
   return data;
+}
+
+bool cppfunc::is_number(const std::string& s)
+{
+    std::string::const_iterator it = s.begin();
+    while (it != s.end() &&
+	   (std::isdigit(*it) || *it=='-' || *it=='.')) ++it;
+    // Include '+'?
+    return !s.empty() && it == s.end();
 }

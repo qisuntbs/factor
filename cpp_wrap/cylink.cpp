@@ -4,19 +4,19 @@
 {
     "distutils": {
         "depends": [
-            "read_csv.cpp",
-            "read_csv.h"
+            "cppfunc.cpp",
+            "cppfunc.h"
         ],
         "include_dirs": [
             "."
         ],
         "language": "c++",
-        "name": "func",
+        "name": "cylink",
         "sources": [
-            "func.pyx"
+            "cylink.pyx"
         ]
     },
-    "module_name": "func"
+    "module_name": "cylink"
 }
 END: Cython Metadata */
 
@@ -29,7 +29,7 @@ END: Cython Metadata */
 #else
 #define CYTHON_ABI "0_29_21"
 #define CYTHON_HEX_VERSION 0x001D15F0
-#define CYTHON_FUTURE_DIVISION 0
+#define CYTHON_FUTURE_DIVISION 1
 #include <stddef.h>
 #ifndef offsetof
   #define offsetof(type, member) ( (size_t) & ((type*)0) -> member )
@@ -636,8 +636,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__func
-#define __PYX_HAVE_API__func
+#define __PYX_HAVE__cylink
+#define __PYX_HAVE_API__cylink
 /* Early includes */
 #include <string.h>
 #include "ios"
@@ -646,8 +646,8 @@ static CYTHON_INLINE float __PYX_NAN() {
 #include "typeinfo"
 #include <string>
 #include <vector>
-#include "read_csv.cpp"
-#include "read_csv.h"
+#include "cppfunc.cpp"
+#include "cppfunc.h"
 #ifdef _OPENMP
 #include <omp.h>
 #endif /* _OPENMP */
@@ -857,22 +857,22 @@ static const char *__pyx_filename;
 
 static const char *__pyx_f[] = {
   "stringsource",
-  "func.pyx",
+  "cylink.pyx",
 };
 
 /*--- Type declarations ---*/
-struct __pyx_obj_4func_py_table;
+struct __pyx_obj_6cylink_cyfunc;
 
-/* "func.pyx":6
- * from read_csv cimport table
+/* "cylink.pyx":6
+ * from cppfunc cimport cppfunc
  * 
- * cdef class py_table:             # <<<<<<<<<<<<<<
- *     cdef table cyt
+ * cdef class cyfunc:             # <<<<<<<<<<<<<<
+ *     cdef cppfunc cyt
  * 
  */
-struct __pyx_obj_4func_py_table {
+struct __pyx_obj_6cylink_cyfunc {
   PyObject_HEAD
-  table cyt;
+  cppfunc cyt;
 };
 
 
@@ -950,17 +950,12 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStr(PyObject* obj, PyObject
 /* GetBuiltinName.proto */
 static PyObject *__Pyx_GetBuiltinName(PyObject *name);
 
-/* RaiseDoubleKeywords.proto */
-static void __Pyx_RaiseDoubleKeywordsError(const char* func_name, PyObject* kw_name);
-
-/* ParseKeywords.proto */
-static int __Pyx_ParseOptionalKeywords(PyObject *kwds, PyObject **argnames[],\
-    PyObject *kwds2, PyObject *values[], Py_ssize_t num_pos_args,\
-    const char* function_name);
-
 /* RaiseArgTupleInvalid.proto */
 static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
     Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
+
+/* KeywordStringCheck.proto */
+static int __Pyx_CheckKeywordStrings(PyObject *kwdict, const char* function_name, int kw_allowed);
 
 /* PyObjectCall.proto */
 #if CYTHON_COMPILING_IN_CPYTHON
@@ -1188,10 +1183,10 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 /* Module declarations from 'libcpp.vector' */
 
-/* Module declarations from 'read_csv' */
+/* Module declarations from 'cppfunc' */
 
-/* Module declarations from 'func' */
-static PyTypeObject *__pyx_ptype_4func_py_table = 0;
+/* Module declarations from 'cylink' */
+static PyTypeObject *__pyx_ptype_6cylink_cyfunc = 0;
 static std::string __pyx_convert_string_from_py_std__in_string(PyObject *); /*proto*/
 static CYTHON_INLINE PyObject *__pyx_convert_PyObject_string_to_py_std__in_string(std::string const &); /*proto*/
 static CYTHON_INLINE PyObject *__pyx_convert_PyUnicode_string_to_py_std__in_string(std::string const &); /*proto*/
@@ -1202,23 +1197,22 @@ static PyObject *__pyx_convert_vector_to_py_std_3a__3a_string(const std::vector<
 static PyObject *__pyx_convert_vector_to_py_std_3a__3a_vector_3c_std_3a__3a_string_3e___(const std::vector<std::vector<std::string> >  &); /*proto*/
 static PyObject *__pyx_convert_vector_to_py_double(const std::vector<double>  &); /*proto*/
 static PyObject *__pyx_convert_vector_to_py_std_3a__3a_vector_3c_double_3e___(const std::vector<std::vector<double> >  &); /*proto*/
-#define __Pyx_MODULE_NAME "func"
-extern int __pyx_module_is_main_func;
-int __pyx_module_is_main_func = 0;
+#define __Pyx_MODULE_NAME "cylink"
+extern int __pyx_module_is_main_cylink;
+int __pyx_module_is_main_cylink = 0;
 
-/* Implementation of 'func' */
+/* Implementation of 'cylink' */
 static PyObject *__pyx_builtin_TypeError;
 static PyObject *__pyx_builtin_range;
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_range[] = "range";
+static const char __pyx_k_cyfunc[] = "cyfunc";
 static const char __pyx_k_reduce[] = "__reduce__";
 static const char __pyx_k_getstate[] = "__getstate__";
-static const char __pyx_k_py_table[] = "py_table";
 static const char __pyx_k_setstate[] = "__setstate__";
 static const char __pyx_k_TypeError[] = "TypeError";
-static const char __pyx_k_file_name[] = "file_name";
 static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
@@ -1226,12 +1220,11 @@ static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
 static PyObject *__pyx_n_s_TypeError;
 static PyObject *__pyx_n_s_cline_in_traceback;
-static PyObject *__pyx_n_s_file_name;
+static PyObject *__pyx_n_s_cyfunc;
 static PyObject *__pyx_n_s_getstate;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_kp_s_no_default___reduce___due_to_non;
-static PyObject *__pyx_n_s_py_table;
 static PyObject *__pyx_n_s_range;
 static PyObject *__pyx_n_s_reduce;
 static PyObject *__pyx_n_s_reduce_cython;
@@ -1239,110 +1232,69 @@ static PyObject *__pyx_n_s_reduce_ex;
 static PyObject *__pyx_n_s_setstate;
 static PyObject *__pyx_n_s_setstate_cython;
 static PyObject *__pyx_n_s_test;
-static int __pyx_pf_4func_8py_table___cinit__(struct __pyx_obj_4func_py_table *__pyx_v_self, std::string __pyx_v_file_name); /* proto */
-static PyObject *__pyx_pf_4func_8py_table_2get_data(struct __pyx_obj_4func_py_table *__pyx_v_self, std::string __pyx_v_file_name); /* proto */
-static PyObject *__pyx_pf_4func_8py_table_4get_double(struct __pyx_obj_4func_py_table *__pyx_v_self, std::string __pyx_v_file_name); /* proto */
-static PyObject *__pyx_pf_4func_8py_table_9file_name___get__(struct __pyx_obj_4func_py_table *__pyx_v_self); /* proto */
-static int __pyx_pf_4func_8py_table_9file_name_2__set__(struct __pyx_obj_4func_py_table *__pyx_v_self, PyObject *__pyx_v_file_name); /* proto */
-static PyObject *__pyx_pf_4func_8py_table_4data___get__(struct __pyx_obj_4func_py_table *__pyx_v_self); /* proto */
-static int __pyx_pf_4func_8py_table_4data_2__set__(struct __pyx_obj_4func_py_table *__pyx_v_self, PyObject *__pyx_v_file_name); /* proto */
-static PyObject *__pyx_pf_4func_8py_table_6__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_4func_py_table *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_4func_8py_table_8__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_4func_py_table *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_tp_new_4func_py_table(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static int __pyx_pf_6cylink_6cyfunc___cinit__(struct __pyx_obj_6cylink_cyfunc *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6cylink_6cyfunc_2get_str_data(struct __pyx_obj_6cylink_cyfunc *__pyx_v_self, std::string __pyx_v_file_name); /* proto */
+static PyObject *__pyx_pf_6cylink_6cyfunc_4get_double(struct __pyx_obj_6cylink_cyfunc *__pyx_v_self, std::string __pyx_v_file_name); /* proto */
+static PyObject *__pyx_pf_6cylink_6cyfunc_6__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6cylink_cyfunc *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6cylink_6cyfunc_8__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6cylink_cyfunc *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_tp_new_6cylink_cyfunc(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
 /* Late includes */
 
-/* "func.pyx":9
- *     cdef table cyt
+/* "cylink.pyx":9
+ *     cdef cppfunc cyt
  * 
- *     def __cinit__(self, string file_name):             # <<<<<<<<<<<<<<
- *         self.cyt = table(file_name)
+ *     def __cinit__(self):             # <<<<<<<<<<<<<<
+ *         self.cyt = cppfunc()
  * 
  */
 
 /* Python wrapper */
-static int __pyx_pw_4func_8py_table_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_4func_8py_table_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  std::string __pyx_v_file_name;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
+static int __pyx_pw_6cylink_6cyfunc_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_6cylink_6cyfunc_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
-  {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_file_name,0};
-    PyObject* values[1] = {0};
-    if (unlikely(__pyx_kwds)) {
-      Py_ssize_t kw_args;
-      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
-      switch (pos_args) {
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = PyDict_Size(__pyx_kwds);
-      switch (pos_args) {
-        case  0:
-        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_file_name)) != 0)) kw_args--;
-        else goto __pyx_L5_argtuple_error;
-      }
-      if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(1, 9, __pyx_L3_error)
-      }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-    }
-    __pyx_v_file_name = __pyx_convert_string_from_py_std__in_string(values[0]); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 9, __pyx_L3_error)
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 9, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("func.py_table.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return -1;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4func_8py_table___cinit__(((struct __pyx_obj_4func_py_table *)__pyx_v_self), __pyx_v_file_name);
+  if (unlikely(PyTuple_GET_SIZE(__pyx_args) > 0)) {
+    __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); return -1;}
+  if (unlikely(__pyx_kwds) && unlikely(PyDict_Size(__pyx_kwds) > 0) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "__cinit__", 0))) return -1;
+  __pyx_r = __pyx_pf_6cylink_6cyfunc___cinit__(((struct __pyx_obj_6cylink_cyfunc *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_4func_8py_table___cinit__(struct __pyx_obj_4func_py_table *__pyx_v_self, std::string __pyx_v_file_name) {
+static int __pyx_pf_6cylink_6cyfunc___cinit__(struct __pyx_obj_6cylink_cyfunc *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
-  table __pyx_t_1;
+  cppfunc __pyx_t_1;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "func.pyx":10
+  /* "cylink.pyx":10
  * 
- *     def __cinit__(self, string file_name):
- *         self.cyt = table(file_name)             # <<<<<<<<<<<<<<
+ *     def __cinit__(self):
+ *         self.cyt = cppfunc()             # <<<<<<<<<<<<<<
  * 
- *     # def data_as_str(self, string file_name):
+ *     def get_str_data(self, string file_name):
  */
   try {
-    __pyx_t_1 = table(__pyx_v_file_name);
+    __pyx_t_1 = cppfunc();
   } catch(...) {
     __Pyx_CppExn2PyErr();
     __PYX_ERR(1, 10, __pyx_L1_error)
   }
   __pyx_v_self->cyt = __pyx_t_1;
 
-  /* "func.pyx":9
- *     cdef table cyt
+  /* "cylink.pyx":9
+ *     cdef cppfunc cyt
  * 
- *     def __cinit__(self, string file_name):             # <<<<<<<<<<<<<<
- *         self.cyt = table(file_name)
+ *     def __cinit__(self):             # <<<<<<<<<<<<<<
+ *         self.cyt = cppfunc()
  * 
  */
 
@@ -1350,74 +1302,74 @@ static int __pyx_pf_4func_8py_table___cinit__(struct __pyx_obj_4func_py_table *_
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("func.py_table.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cylink.cyfunc.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "func.pyx":14
- *     # def data_as_str(self, string file_name):
- *     #     return self.cyt.data_as_string(file_name)
- *     def get_data(self, string file_name):             # <<<<<<<<<<<<<<
+/* "cylink.pyx":12
+ *         self.cyt = cppfunc()
+ * 
+ *     def get_str_data(self, string file_name):             # <<<<<<<<<<<<<<
  *         return self.cyt.data_as_string(file_name)
  * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4func_8py_table_3get_data(PyObject *__pyx_v_self, PyObject *__pyx_arg_file_name); /*proto*/
-static PyObject *__pyx_pw_4func_8py_table_3get_data(PyObject *__pyx_v_self, PyObject *__pyx_arg_file_name) {
+static PyObject *__pyx_pw_6cylink_6cyfunc_3get_str_data(PyObject *__pyx_v_self, PyObject *__pyx_arg_file_name); /*proto*/
+static PyObject *__pyx_pw_6cylink_6cyfunc_3get_str_data(PyObject *__pyx_v_self, PyObject *__pyx_arg_file_name) {
   std::string __pyx_v_file_name;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("get_data (wrapper)", 0);
+  __Pyx_RefNannySetupContext("get_str_data (wrapper)", 0);
   assert(__pyx_arg_file_name); {
-    __pyx_v_file_name = __pyx_convert_string_from_py_std__in_string(__pyx_arg_file_name); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 14, __pyx_L3_error)
+    __pyx_v_file_name = __pyx_convert_string_from_py_std__in_string(__pyx_arg_file_name); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
-  __Pyx_AddTraceback("func.py_table.get_data", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cylink.cyfunc.get_str_data", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4func_8py_table_2get_data(((struct __pyx_obj_4func_py_table *)__pyx_v_self), ((std::string)__pyx_v_file_name));
+  __pyx_r = __pyx_pf_6cylink_6cyfunc_2get_str_data(((struct __pyx_obj_6cylink_cyfunc *)__pyx_v_self), ((std::string)__pyx_v_file_name));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4func_8py_table_2get_data(struct __pyx_obj_4func_py_table *__pyx_v_self, std::string __pyx_v_file_name) {
+static PyObject *__pyx_pf_6cylink_6cyfunc_2get_str_data(struct __pyx_obj_6cylink_cyfunc *__pyx_v_self, std::string __pyx_v_file_name) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("get_data", 0);
+  __Pyx_RefNannySetupContext("get_str_data", 0);
 
-  /* "func.pyx":15
- *     #     return self.cyt.data_as_string(file_name)
- *     def get_data(self, string file_name):
+  /* "cylink.pyx":13
+ * 
+ *     def get_str_data(self, string file_name):
  *         return self.cyt.data_as_string(file_name)             # <<<<<<<<<<<<<<
  * 
  *     def get_double(self, string file_name):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_convert_vector_to_py_std_3a__3a_vector_3c_std_3a__3a_string_3e___(__pyx_v_self->cyt.data_as_string(__pyx_v_file_name)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 15, __pyx_L1_error)
+  __pyx_t_1 = __pyx_convert_vector_to_py_std_3a__3a_vector_3c_std_3a__3a_string_3e___(__pyx_v_self->cyt.data_as_string(__pyx_v_file_name)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "func.pyx":14
- *     # def data_as_str(self, string file_name):
- *     #     return self.cyt.data_as_string(file_name)
- *     def get_data(self, string file_name):             # <<<<<<<<<<<<<<
+  /* "cylink.pyx":12
+ *         self.cyt = cppfunc()
+ * 
+ *     def get_str_data(self, string file_name):             # <<<<<<<<<<<<<<
  *         return self.cyt.data_as_string(file_name)
  * 
  */
@@ -1425,7 +1377,7 @@ static PyObject *__pyx_pf_4func_8py_table_2get_data(struct __pyx_obj_4func_py_ta
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("func.py_table.get_data", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cylink.cyfunc.get_str_data", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -1433,17 +1385,16 @@ static PyObject *__pyx_pf_4func_8py_table_2get_data(struct __pyx_obj_4func_py_ta
   return __pyx_r;
 }
 
-/* "func.pyx":17
+/* "cylink.pyx":15
  *         return self.cyt.data_as_string(file_name)
  * 
  *     def get_double(self, string file_name):             # <<<<<<<<<<<<<<
  *         return self.cyt.data_as_double(file_name)
- * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4func_8py_table_5get_double(PyObject *__pyx_v_self, PyObject *__pyx_arg_file_name); /*proto*/
-static PyObject *__pyx_pw_4func_8py_table_5get_double(PyObject *__pyx_v_self, PyObject *__pyx_arg_file_name) {
+static PyObject *__pyx_pw_6cylink_6cyfunc_5get_double(PyObject *__pyx_v_self, PyObject *__pyx_arg_file_name); /*proto*/
+static PyObject *__pyx_pw_6cylink_6cyfunc_5get_double(PyObject *__pyx_v_self, PyObject *__pyx_arg_file_name) {
   std::string __pyx_v_file_name;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -1452,22 +1403,22 @@ static PyObject *__pyx_pw_4func_8py_table_5get_double(PyObject *__pyx_v_self, Py
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_double (wrapper)", 0);
   assert(__pyx_arg_file_name); {
-    __pyx_v_file_name = __pyx_convert_string_from_py_std__in_string(__pyx_arg_file_name); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 17, __pyx_L3_error)
+    __pyx_v_file_name = __pyx_convert_string_from_py_std__in_string(__pyx_arg_file_name); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 15, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
-  __Pyx_AddTraceback("func.py_table.get_double", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cylink.cyfunc.get_double", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4func_8py_table_4get_double(((struct __pyx_obj_4func_py_table *)__pyx_v_self), ((std::string)__pyx_v_file_name));
+  __pyx_r = __pyx_pf_6cylink_6cyfunc_4get_double(((struct __pyx_obj_6cylink_cyfunc *)__pyx_v_self), ((std::string)__pyx_v_file_name));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4func_8py_table_4get_double(struct __pyx_obj_4func_py_table *__pyx_v_self, std::string __pyx_v_file_name) {
+static PyObject *__pyx_pf_6cylink_6cyfunc_4get_double(struct __pyx_obj_6cylink_cyfunc *__pyx_v_self, std::string __pyx_v_file_name) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1476,278 +1427,32 @@ static PyObject *__pyx_pf_4func_8py_table_4get_double(struct __pyx_obj_4func_py_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_double", 0);
 
-  /* "func.pyx":18
+  /* "cylink.pyx":16
  * 
  *     def get_double(self, string file_name):
  *         return self.cyt.data_as_double(file_name)             # <<<<<<<<<<<<<<
- * 
- * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_convert_vector_to_py_std_3a__3a_vector_3c_double_3e___(__pyx_v_self->cyt.data_as_double(__pyx_v_file_name)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 18, __pyx_L1_error)
+  __pyx_t_1 = __pyx_convert_vector_to_py_std_3a__3a_vector_3c_double_3e___(__pyx_v_self->cyt.data_as_double(__pyx_v_file_name)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "func.pyx":17
+  /* "cylink.pyx":15
  *         return self.cyt.data_as_string(file_name)
  * 
  *     def get_double(self, string file_name):             # <<<<<<<<<<<<<<
  *         return self.cyt.data_as_double(file_name)
- * 
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("func.py_table.get_double", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cylink.cyfunc.get_double", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "func.pyx":23
- *     # Attribute access
- *     @property
- *     def file_name(self):             # <<<<<<<<<<<<<<
- *         return self.cyt.file_name
- *     @file_name.setter
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_4func_8py_table_9file_name_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_4func_8py_table_9file_name_1__get__(PyObject *__pyx_v_self) {
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_4func_8py_table_9file_name___get__(((struct __pyx_obj_4func_py_table *)__pyx_v_self));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_4func_8py_table_9file_name___get__(struct __pyx_obj_4func_py_table *__pyx_v_self) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("__get__", 0);
-
-  /* "func.pyx":24
- *     @property
- *     def file_name(self):
- *         return self.cyt.file_name             # <<<<<<<<<<<<<<
- *     @file_name.setter
- *     def file_name(self, file_name):
- */
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_convert_PyBytes_string_to_py_std__in_string(__pyx_v_self->cyt.file_name); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 24, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* "func.pyx":23
- *     # Attribute access
- *     @property
- *     def file_name(self):             # <<<<<<<<<<<<<<
- *         return self.cyt.file_name
- *     @file_name.setter
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("func.py_table.file_name.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "func.pyx":26
- *         return self.cyt.file_name
- *     @file_name.setter
- *     def file_name(self, file_name):             # <<<<<<<<<<<<<<
- *         self.cyt.file_name = file_name
- * 
- */
-
-/* Python wrapper */
-static int __pyx_pw_4func_8py_table_9file_name_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_file_name); /*proto*/
-static int __pyx_pw_4func_8py_table_9file_name_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_file_name) {
-  int __pyx_r;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_4func_8py_table_9file_name_2__set__(((struct __pyx_obj_4func_py_table *)__pyx_v_self), ((PyObject *)__pyx_v_file_name));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static int __pyx_pf_4func_8py_table_9file_name_2__set__(struct __pyx_obj_4func_py_table *__pyx_v_self, PyObject *__pyx_v_file_name) {
-  int __pyx_r;
-  __Pyx_RefNannyDeclarations
-  std::string __pyx_t_1;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("__set__", 0);
-
-  /* "func.pyx":27
- *     @file_name.setter
- *     def file_name(self, file_name):
- *         self.cyt.file_name = file_name             # <<<<<<<<<<<<<<
- * 
- *     @property
- */
-  __pyx_t_1 = __pyx_convert_string_from_py_std__in_string(__pyx_v_file_name); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 27, __pyx_L1_error)
-  __pyx_v_self->cyt.file_name = __pyx_t_1;
-
-  /* "func.pyx":26
- *         return self.cyt.file_name
- *     @file_name.setter
- *     def file_name(self, file_name):             # <<<<<<<<<<<<<<
- *         self.cyt.file_name = file_name
- * 
- */
-
-  /* function exit code */
-  __pyx_r = 0;
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("func.py_table.file_name.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = -1;
-  __pyx_L0:;
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "func.pyx":30
- * 
- *     @property
- *     def data(self):             # <<<<<<<<<<<<<<
- *         return self.cyt.data
- *     @data.setter
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_4func_8py_table_4data_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_4func_8py_table_4data_1__get__(PyObject *__pyx_v_self) {
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_4func_8py_table_4data___get__(((struct __pyx_obj_4func_py_table *)__pyx_v_self));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_4func_8py_table_4data___get__(struct __pyx_obj_4func_py_table *__pyx_v_self) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("__get__", 0);
-
-  /* "func.pyx":31
- *     @property
- *     def data(self):
- *         return self.cyt.data             # <<<<<<<<<<<<<<
- *     @data.setter
- *     def data(self, file_name):
- */
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_convert_vector_to_py_std_3a__3a_vector_3c_std_3a__3a_string_3e___(__pyx_v_self->cyt.data); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 31, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* "func.pyx":30
- * 
- *     @property
- *     def data(self):             # <<<<<<<<<<<<<<
- *         return self.cyt.data
- *     @data.setter
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("func.py_table.data.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "func.pyx":33
- *         return self.cyt.data
- *     @data.setter
- *     def data(self, file_name):             # <<<<<<<<<<<<<<
- *         self.cyt.data = self.cyt.data_as_string(file_name)
- * 
- */
-
-/* Python wrapper */
-static int __pyx_pw_4func_8py_table_4data_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_file_name); /*proto*/
-static int __pyx_pw_4func_8py_table_4data_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_file_name) {
-  int __pyx_r;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_4func_8py_table_4data_2__set__(((struct __pyx_obj_4func_py_table *)__pyx_v_self), ((PyObject *)__pyx_v_file_name));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static int __pyx_pf_4func_8py_table_4data_2__set__(struct __pyx_obj_4func_py_table *__pyx_v_self, PyObject *__pyx_v_file_name) {
-  int __pyx_r;
-  __Pyx_RefNannyDeclarations
-  std::string __pyx_t_1;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("__set__", 0);
-
-  /* "func.pyx":34
- *     @data.setter
- *     def data(self, file_name):
- *         self.cyt.data = self.cyt.data_as_string(file_name)             # <<<<<<<<<<<<<<
- * 
- */
-  __pyx_t_1 = __pyx_convert_string_from_py_std__in_string(__pyx_v_file_name); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 34, __pyx_L1_error)
-  __pyx_v_self->cyt.data = __pyx_v_self->cyt.data_as_string(__pyx_t_1);
-
-  /* "func.pyx":33
- *         return self.cyt.data
- *     @data.setter
- *     def data(self, file_name):             # <<<<<<<<<<<<<<
- *         self.cyt.data = self.cyt.data_as_string(file_name)
- * 
- */
-
-  /* function exit code */
-  __pyx_r = 0;
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("func.py_table.data.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = -1;
-  __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
@@ -1759,19 +1464,19 @@ static int __pyx_pf_4func_8py_table_4data_2__set__(struct __pyx_obj_4func_py_tab
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4func_8py_table_7__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_4func_8py_table_7__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6cylink_6cyfunc_7__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6cylink_6cyfunc_7__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_4func_8py_table_6__reduce_cython__(((struct __pyx_obj_4func_py_table *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6cylink_6cyfunc_6__reduce_cython__(((struct __pyx_obj_6cylink_cyfunc *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4func_8py_table_6__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_4func_py_table *__pyx_v_self) {
+static PyObject *__pyx_pf_6cylink_6cyfunc_6__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6cylink_cyfunc *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1801,7 +1506,7 @@ static PyObject *__pyx_pf_4func_8py_table_6__reduce_cython__(CYTHON_UNUSED struc
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("func.py_table.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cylink.cyfunc.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -1816,19 +1521,19 @@ static PyObject *__pyx_pf_4func_8py_table_6__reduce_cython__(CYTHON_UNUSED struc
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4func_8py_table_9__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyObject *__pyx_pw_4func_8py_table_9__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_6cylink_6cyfunc_9__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_6cylink_6cyfunc_9__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_4func_8py_table_8__setstate_cython__(((struct __pyx_obj_4func_py_table *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_6cylink_6cyfunc_8__setstate_cython__(((struct __pyx_obj_6cylink_cyfunc *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4func_8py_table_8__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_4func_py_table *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_6cylink_6cyfunc_8__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6cylink_cyfunc *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1858,7 +1563,7 @@ static PyObject *__pyx_pf_4func_8py_table_8__setstate_cython__(CYTHON_UNUSED str
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("func.py_table.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cylink.cyfunc.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -2415,8 +2120,8 @@ static PyObject *__pyx_convert_vector_to_py_std_3a__3a_vector_3c_double_3e___(co
   return __pyx_r;
 }
 
-static PyObject *__pyx_tp_new_4func_py_table(PyTypeObject *t, PyObject *a, PyObject *k) {
-  struct __pyx_obj_4func_py_table *p;
+static PyObject *__pyx_tp_new_6cylink_cyfunc(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+  struct __pyx_obj_6cylink_cyfunc *p;
   PyObject *o;
   if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
     o = (*t->tp_alloc)(t, 0);
@@ -2424,17 +2129,17 @@ static PyObject *__pyx_tp_new_4func_py_table(PyTypeObject *t, PyObject *a, PyObj
     o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
   }
   if (unlikely(!o)) return 0;
-  p = ((struct __pyx_obj_4func_py_table *)o);
-  new((void*)&(p->cyt)) table();
-  if (unlikely(__pyx_pw_4func_8py_table_1__cinit__(o, a, k) < 0)) goto bad;
+  p = ((struct __pyx_obj_6cylink_cyfunc *)o);
+  new((void*)&(p->cyt)) cppfunc();
+  if (unlikely(__pyx_pw_6cylink_6cyfunc_1__cinit__(o, __pyx_empty_tuple, NULL) < 0)) goto bad;
   return o;
   bad:
   Py_DECREF(o); o = 0;
   return NULL;
 }
 
-static void __pyx_tp_dealloc_4func_py_table(PyObject *o) {
-  struct __pyx_obj_4func_py_table *p = (struct __pyx_obj_4func_py_table *)o;
+static void __pyx_tp_dealloc_6cylink_cyfunc(PyObject *o) {
+  struct __pyx_obj_6cylink_cyfunc *p = (struct __pyx_obj_6cylink_cyfunc *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE) && Py_TYPE(o)->tp_finalize) && (!PyType_IS_GC(Py_TYPE(o)) || !_PyGC_FINALIZED(o))) {
     if (PyObject_CallFinalizerFromDealloc(o)) return;
@@ -2444,54 +2149,20 @@ static void __pyx_tp_dealloc_4func_py_table(PyObject *o) {
   (*Py_TYPE(o)->tp_free)(o);
 }
 
-static PyObject *__pyx_getprop_4func_8py_table_file_name(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_4func_8py_table_9file_name_1__get__(o);
-}
-
-static int __pyx_setprop_4func_8py_table_file_name(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
-  if (v) {
-    return __pyx_pw_4func_8py_table_9file_name_3__set__(o, v);
-  }
-  else {
-    PyErr_SetString(PyExc_NotImplementedError, "__del__");
-    return -1;
-  }
-}
-
-static PyObject *__pyx_getprop_4func_8py_table_data(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_4func_8py_table_4data_1__get__(o);
-}
-
-static int __pyx_setprop_4func_8py_table_data(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
-  if (v) {
-    return __pyx_pw_4func_8py_table_4data_3__set__(o, v);
-  }
-  else {
-    PyErr_SetString(PyExc_NotImplementedError, "__del__");
-    return -1;
-  }
-}
-
-static PyMethodDef __pyx_methods_4func_py_table[] = {
-  {"get_data", (PyCFunction)__pyx_pw_4func_8py_table_3get_data, METH_O, 0},
-  {"get_double", (PyCFunction)__pyx_pw_4func_8py_table_5get_double, METH_O, 0},
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_4func_8py_table_7__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_4func_8py_table_9__setstate_cython__, METH_O, 0},
+static PyMethodDef __pyx_methods_6cylink_cyfunc[] = {
+  {"get_str_data", (PyCFunction)__pyx_pw_6cylink_6cyfunc_3get_str_data, METH_O, 0},
+  {"get_double", (PyCFunction)__pyx_pw_6cylink_6cyfunc_5get_double, METH_O, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_6cylink_6cyfunc_7__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_6cylink_6cyfunc_9__setstate_cython__, METH_O, 0},
   {0, 0, 0, 0}
 };
 
-static struct PyGetSetDef __pyx_getsets_4func_py_table[] = {
-  {(char *)"file_name", __pyx_getprop_4func_8py_table_file_name, __pyx_setprop_4func_8py_table_file_name, (char *)0, 0},
-  {(char *)"data", __pyx_getprop_4func_8py_table_data, __pyx_setprop_4func_8py_table_data, (char *)0, 0},
-  {0, 0, 0, 0, 0}
-};
-
-static PyTypeObject __pyx_type_4func_py_table = {
+static PyTypeObject __pyx_type_6cylink_cyfunc = {
   PyVarObject_HEAD_INIT(0, 0)
-  "func.py_table", /*tp_name*/
-  sizeof(struct __pyx_obj_4func_py_table), /*tp_basicsize*/
+  "cylink.cyfunc", /*tp_name*/
+  sizeof(struct __pyx_obj_6cylink_cyfunc), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_4func_py_table, /*tp_dealloc*/
+  __pyx_tp_dealloc_6cylink_cyfunc, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -2524,9 +2195,9 @@ static PyTypeObject __pyx_type_4func_py_table = {
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_4func_py_table, /*tp_methods*/
+  __pyx_methods_6cylink_cyfunc, /*tp_methods*/
   0, /*tp_members*/
-  __pyx_getsets_4func_py_table, /*tp_getset*/
+  0, /*tp_getset*/
   0, /*tp_base*/
   0, /*tp_dict*/
   0, /*tp_descr_get*/
@@ -2534,7 +2205,7 @@ static PyTypeObject __pyx_type_4func_py_table = {
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_4func_py_table, /*tp_new*/
+  __pyx_tp_new_6cylink_cyfunc, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -2562,17 +2233,17 @@ static PyMethodDef __pyx_methods[] = {
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_func(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_cylink(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_func},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_cylink},
   {0, NULL}
 };
 #endif
 
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
-    "func",
+    "cylink",
     0, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
@@ -2603,12 +2274,11 @@ static struct PyModuleDef __pyx_moduledef = {
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_TypeError, __pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
-  {&__pyx_n_s_file_name, __pyx_k_file_name, sizeof(__pyx_k_file_name), 0, 0, 1, 1},
+  {&__pyx_n_s_cyfunc, __pyx_k_cyfunc, sizeof(__pyx_k_cyfunc), 0, 0, 1, 1},
   {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_kp_s_no_default___reduce___due_to_non, __pyx_k_no_default___reduce___due_to_non, sizeof(__pyx_k_no_default___reduce___due_to_non), 0, 0, 1, 0},
-  {&__pyx_n_s_py_table, __pyx_k_py_table, sizeof(__pyx_k_py_table), 0, 0, 1, 1},
   {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
   {&__pyx_n_s_reduce, __pyx_k_reduce, sizeof(__pyx_k_reduce), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_cython, __pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 0, 1, 1},
@@ -2701,16 +2371,16 @@ static int __Pyx_modinit_type_init_code(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_4func_py_table) < 0) __PYX_ERR(1, 6, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6cylink_cyfunc) < 0) __PYX_ERR(1, 6, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
-  __pyx_type_4func_py_table.tp_print = 0;
+  __pyx_type_6cylink_cyfunc.tp_print = 0;
   #endif
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_4func_py_table.tp_dictoffset && __pyx_type_4func_py_table.tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_type_4func_py_table.tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_6cylink_cyfunc.tp_dictoffset && __pyx_type_6cylink_cyfunc.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_6cylink_cyfunc.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_py_table, (PyObject *)&__pyx_type_4func_py_table) < 0) __PYX_ERR(1, 6, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_4func_py_table) < 0) __PYX_ERR(1, 6, __pyx_L1_error)
-  __pyx_ptype_4func_py_table = &__pyx_type_4func_py_table;
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_cyfunc, (PyObject *)&__pyx_type_6cylink_cyfunc) < 0) __PYX_ERR(1, 6, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6cylink_cyfunc) < 0) __PYX_ERR(1, 6, __pyx_L1_error)
+  __pyx_ptype_6cylink_cyfunc = &__pyx_type_6cylink_cyfunc;
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -2761,11 +2431,11 @@ static int __Pyx_modinit_function_import_code(void) {
 
 
 #if PY_MAJOR_VERSION < 3
-__Pyx_PyMODINIT_FUNC initfunc(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC initfunc(void)
+__Pyx_PyMODINIT_FUNC initcylink(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC initcylink(void)
 #else
-__Pyx_PyMODINIT_FUNC PyInit_func(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_func(void)
+__Pyx_PyMODINIT_FUNC PyInit_cylink(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_cylink(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -2832,7 +2502,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_func(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_cylink(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -2844,7 +2514,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_func(PyObject *__pyx_pyinit_module
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'func' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'cylink' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #elif PY_MAJOR_VERSION >= 3
@@ -2859,7 +2529,7 @@ if (!__Pyx_RefNanny) {
       Py_FatalError("failed to import 'refnanny' module");
 }
 #endif
-  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_func(void)", 0);
+  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_cylink(void)", 0);
   if (__Pyx_check_binary_version() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   #ifdef __Pxy_PyFrame_Initialize_Offsets
   __Pxy_PyFrame_Initialize_Offsets();
@@ -2898,7 +2568,7 @@ if (!__Pyx_RefNanny) {
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("func", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("cylink", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -2916,14 +2586,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_func) {
+  if (__pyx_module_is_main_cylink) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(1, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "func")) {
-      if (unlikely(PyDict_SetItemString(modules, "func", __pyx_m) < 0)) __PYX_ERR(1, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "cylink")) {
+      if (unlikely(PyDict_SetItemString(modules, "cylink", __pyx_m) < 0)) __PYX_ERR(1, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -2944,7 +2614,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   #endif
 
-  /* "func.pyx":1
+  /* "cylink.pyx":1
  * # distutils: language = c++             # <<<<<<<<<<<<<<
  * 
  * from libcpp.string cimport string
@@ -2969,11 +2639,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init func", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init cylink", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init func");
+    PyErr_SetString(PyExc_ImportError, "init cylink");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -3032,122 +2702,6 @@ static PyObject *__Pyx_GetBuiltinName(PyObject *name) {
     return result;
 }
 
-/* RaiseDoubleKeywords */
-static void __Pyx_RaiseDoubleKeywordsError(
-    const char* func_name,
-    PyObject* kw_name)
-{
-    PyErr_Format(PyExc_TypeError,
-        #if PY_MAJOR_VERSION >= 3
-        "%s() got multiple values for keyword argument '%U'", func_name, kw_name);
-        #else
-        "%s() got multiple values for keyword argument '%s'", func_name,
-        PyString_AsString(kw_name));
-        #endif
-}
-
-/* ParseKeywords */
-static int __Pyx_ParseOptionalKeywords(
-    PyObject *kwds,
-    PyObject **argnames[],
-    PyObject *kwds2,
-    PyObject *values[],
-    Py_ssize_t num_pos_args,
-    const char* function_name)
-{
-    PyObject *key = 0, *value = 0;
-    Py_ssize_t pos = 0;
-    PyObject*** name;
-    PyObject*** first_kw_arg = argnames + num_pos_args;
-    while (PyDict_Next(kwds, &pos, &key, &value)) {
-        name = first_kw_arg;
-        while (*name && (**name != key)) name++;
-        if (*name) {
-            values[name-argnames] = value;
-            continue;
-        }
-        name = first_kw_arg;
-        #if PY_MAJOR_VERSION < 3
-        if (likely(PyString_Check(key))) {
-            while (*name) {
-                if ((CYTHON_COMPILING_IN_PYPY || PyString_GET_SIZE(**name) == PyString_GET_SIZE(key))
-                        && _PyString_Eq(**name, key)) {
-                    values[name-argnames] = value;
-                    break;
-                }
-                name++;
-            }
-            if (*name) continue;
-            else {
-                PyObject*** argname = argnames;
-                while (argname != first_kw_arg) {
-                    if ((**argname == key) || (
-                            (CYTHON_COMPILING_IN_PYPY || PyString_GET_SIZE(**argname) == PyString_GET_SIZE(key))
-                             && _PyString_Eq(**argname, key))) {
-                        goto arg_passed_twice;
-                    }
-                    argname++;
-                }
-            }
-        } else
-        #endif
-        if (likely(PyUnicode_Check(key))) {
-            while (*name) {
-                int cmp = (**name == key) ? 0 :
-                #if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION >= 3
-                    (__Pyx_PyUnicode_GET_LENGTH(**name) != __Pyx_PyUnicode_GET_LENGTH(key)) ? 1 :
-                #endif
-                    PyUnicode_Compare(**name, key);
-                if (cmp < 0 && unlikely(PyErr_Occurred())) goto bad;
-                if (cmp == 0) {
-                    values[name-argnames] = value;
-                    break;
-                }
-                name++;
-            }
-            if (*name) continue;
-            else {
-                PyObject*** argname = argnames;
-                while (argname != first_kw_arg) {
-                    int cmp = (**argname == key) ? 0 :
-                    #if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION >= 3
-                        (__Pyx_PyUnicode_GET_LENGTH(**argname) != __Pyx_PyUnicode_GET_LENGTH(key)) ? 1 :
-                    #endif
-                        PyUnicode_Compare(**argname, key);
-                    if (cmp < 0 && unlikely(PyErr_Occurred())) goto bad;
-                    if (cmp == 0) goto arg_passed_twice;
-                    argname++;
-                }
-            }
-        } else
-            goto invalid_keyword_type;
-        if (kwds2) {
-            if (unlikely(PyDict_SetItem(kwds2, key, value))) goto bad;
-        } else {
-            goto invalid_keyword;
-        }
-    }
-    return 0;
-arg_passed_twice:
-    __Pyx_RaiseDoubleKeywordsError(function_name, key);
-    goto bad;
-invalid_keyword_type:
-    PyErr_Format(PyExc_TypeError,
-        "%.200s() keywords must be strings", function_name);
-    goto bad;
-invalid_keyword:
-    PyErr_Format(PyExc_TypeError,
-    #if PY_MAJOR_VERSION < 3
-        "%.200s() got an unexpected keyword argument '%.200s'",
-        function_name, PyString_AsString(key));
-    #else
-        "%s() got an unexpected keyword argument '%U'",
-        function_name, key);
-    #endif
-bad:
-    return -1;
-}
-
 /* RaiseArgTupleInvalid */
 static void __Pyx_RaiseArgtupleInvalid(
     const char* func_name,
@@ -3172,6 +2726,46 @@ static void __Pyx_RaiseArgtupleInvalid(
                  "%.200s() takes %.8s %" CYTHON_FORMAT_SSIZE_T "d positional argument%.1s (%" CYTHON_FORMAT_SSIZE_T "d given)",
                  func_name, more_or_less, num_expected,
                  (num_expected == 1) ? "" : "s", num_found);
+}
+
+/* KeywordStringCheck */
+static int __Pyx_CheckKeywordStrings(
+    PyObject *kwdict,
+    const char* function_name,
+    int kw_allowed)
+{
+    PyObject* key = 0;
+    Py_ssize_t pos = 0;
+#if CYTHON_COMPILING_IN_PYPY
+    if (!kw_allowed && PyDict_Next(kwdict, &pos, &key, 0))
+        goto invalid_keyword;
+    return 1;
+#else
+    while (PyDict_Next(kwdict, &pos, &key, 0)) {
+        #if PY_MAJOR_VERSION < 3
+        if (unlikely(!PyString_Check(key)))
+        #endif
+            if (unlikely(!PyUnicode_Check(key)))
+                goto invalid_keyword_type;
+    }
+    if ((!kw_allowed) && unlikely(key))
+        goto invalid_keyword;
+    return 1;
+invalid_keyword_type:
+    PyErr_Format(PyExc_TypeError,
+        "%.200s() keywords must be strings", function_name);
+    return 0;
+#endif
+invalid_keyword:
+    PyErr_Format(PyExc_TypeError,
+    #if PY_MAJOR_VERSION < 3
+        "%.200s() got an unexpected keyword argument '%.200s'",
+        function_name, PyString_AsString(key));
+    #else
+        "%s() got an unexpected keyword argument '%U'",
+        function_name, key);
+    #endif
+    return 0;
 }
 
 /* PyObjectCall */

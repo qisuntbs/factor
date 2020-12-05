@@ -1,5 +1,5 @@
-#ifndef READ_CSV_H
-#define READ_CSV_H
+#ifndef CPPFUNC_H
+#define CPPFUNC_H
 
 // #include <fstream>
 // #include <iostream>
@@ -10,20 +10,19 @@
 
 using namespace std;
 
-class table{
+class cppfunc{
 public:
-  // attributes:
-  string file_name;
-  vector <vector <string> > data;
+  // attribute
+  // vector <vector <string> > data;
 
   // constructor:
-  table ();
-  table (string file_name);
+  cppfunc();
 
   // methods:
   vector <vector <string> > data_as_string (string file_name);
   vector <vector <double> > data_as_double (string file_name);
-  virtual ~table ();  // destructor
+  bool is_number(const string& s);
+  virtual ~cppfunc ();  // destructor
 };
 
 #endif

@@ -1,8 +1,11 @@
 #!/usr/bin/python3
-from func import py_table
+from cylink import cyfunc
 
-cy_data = py_table('data.csv'.encode('utf-8'))
-
+# you will still have to import the c++ class by calling cyfunc()
+cy_data = cyfunc()
 print(dir(cy_data))
-# print(cy_data.get_data("data.csv".encode('utf-8')))
-print(cy_data.get_double("data.csv".encode('utf-8')))
+t = cy_data.get_double("data.csv".encode('utf-8'))
+
+for r in t:
+    for c in r:
+        print(type(c), '-', c)
