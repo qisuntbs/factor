@@ -25,7 +25,7 @@ cppfunc::cppfunc(){
 cppfunc::~cppfunc (){ }
 
 vector <vector <string> > cppfunc::data_as_string(string file_name)
-  {
+{
   vector <vector <string> > data;
   ifstream infile( file_name );
   while (infile)
@@ -53,7 +53,7 @@ vector <vector <string> > cppfunc::data_as_string(string file_name)
 
 
 vector <vector <double> > cppfunc::data_as_double(string file_name)
-  {
+{
   vector <vector <double> > data;
   ifstream infile( file_name );
   while (infile)
@@ -83,9 +83,25 @@ vector <vector <double> > cppfunc::data_as_double(string file_name)
 
 bool cppfunc::is_number(const std::string& s)
 {
-    std::string::const_iterator it = s.begin();
-    while (it != s.end() &&
-	   (std::isdigit(*it) || *it=='-' || *it=='.')) ++it;
-    // Include '+'?
-    return !s.empty() && it == s.end();
+  std::string::const_iterator it = s.begin();
+  while (it != s.end() &&
+	 (std::isdigit(*it) || *it=='-' || *it=='.')) ++it;
+  // include '+'?
+  return !s.empty() && it == s.end();
+}
+
+vector <int> cppfunc::remove_nan(vector <vector <double> > data,
+					      int num)
+{
+  vector <int> out;
+  int security_len = data.size();  // 2
+  int time_len = data[0].size();  // 3
+  for (int i = 0; i < security_len; ++i) {
+    int c = 0;
+    for (int j = 0; j < time_len; ++j) {
+      if (isnan(data[i][j])) c++;
+    }
+    if (c < num) out.push_back(i);
+  }
+  return out;
 }

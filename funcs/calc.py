@@ -31,15 +31,21 @@ class data_manipulate():
 class calc():
     @staticmethod
     def cov(df):
-        # calculate historical TS 36M co-variance matrix
+        from cpp_wrap.cylink import cyfunc
+        # calculate historical TS 36M covariance matrix
         # df - panel return data
         # df.shape = T * X (number of month * number of stocks)
         # np.cov(k)[0][0] = np.var(k[:,0], ddof=1)
         # with ddof to go from sample to population
         len_df = len(df)
         cov_list = []
-        # TODO remove those stocks that has no historical returns
-        for i in range(len_df - 35):
+        stock_list = []
+        # remove those stocks that has no historical 36M returns
+        for i in range(len_df - 36):
             sample = df.iloc[i:i+36, :]
-            cov_list.append(np.cov(sample.to_numpy().T))
-        return cov_list
+            sample_t = np.array(sample).T
+            non_nan_list = cyfunc().remove_nan(sample_t, 1)
+            stock_list.append(non_nan_list)
+            sample_non_nan = sample.iloc[:, non_nan_list]
+            cov_list.append(np.cov(np.array(sample_non_nan).T))
+        return cov_list, stock_list

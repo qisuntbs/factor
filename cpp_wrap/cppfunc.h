@@ -1,11 +1,7 @@
 #ifndef CPPFUNC_H
 #define CPPFUNC_H
 
-// #include <fstream>
-// #include <iostream>
-// #include <sstream>
 #include <string>
-// #include <cstring>
 #include <vector>
 
 using namespace std;
@@ -21,8 +17,12 @@ public:
   // methods:
   vector <vector <string> > data_as_string (string file_name);
   vector <vector <double> > data_as_double (string file_name);
+  vector <int> remove_nan(vector <vector <double> > data, int num);
+
   bool is_number(const string& s);
-  virtual ~cppfunc ();  // destructor
+
+  // destructor
+  virtual ~cppfunc ();
 };
 
 #endif
