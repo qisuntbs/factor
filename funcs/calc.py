@@ -40,6 +40,7 @@ class calc():
         len_df = len(df)
         cov_list = []
         stock_list = []
+        ret_list = []
         # remove those stocks that has no historical 36M returns
         for i in range(len_df - 36):
             sample = df.iloc[i:i+36, :]
@@ -48,4 +49,5 @@ class calc():
             stock_list.append(non_nan_list)
             sample_non_nan = sample.iloc[:, non_nan_list]
             cov_list.append(np.cov(np.array(sample_non_nan).T))
-        return cov_list, stock_list
+            ret_list.append(sample_non_nan)
+        return cov_list, stock_list, ret_list

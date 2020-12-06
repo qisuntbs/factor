@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2019, 2020 by Qi Sun
+  Copyright (C) 2018-2020 by Qi Sun
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -44,56 +44,49 @@ vector <vector <string> > cppfunc::data_as_string(string file_name)
 {
   vector <vector <string> > data;
   ifstream infile( file_name );
-  while (infile)
-    {
+  while (infile) {
+    string s;
+    if (!getline( infile, s )) break;
+    istringstream ss( s );
+    vector <string> record;
+    while (ss) {
       string s;
-      if (!getline( infile, s )) break;
-      istringstream ss( s );
-      vector <string> record;
-      while (ss)
-	{
-	  string s;
-	  if (!getline( ss, s, ',' )) break;
-	  record.push_back( s );
-	}
-      data.push_back( record );
+      if (!getline( ss, s, ',' )) break;
+      record.push_back( s );
     }
-  if (!infile.eof())
-    {
-      std::cerr << "ERROR: No such file - " <<
-	file_name << std::endl;
-      exit(2);
-    }
+    data.push_back( record );
+  }
+  if (!infile.eof()) {
+    std::cerr << "ERROR: No such file - " <<
+      file_name << std::endl;
+    exit(2);
+  }
   return data;
 }
-
 
 vector <vector <double> > cppfunc::data_as_double(string file_name)
 {
   vector <vector <double> > data;
   ifstream infile( file_name );
-  while (infile)
-    {
+  while (infile) {
+    string s;
+    if (!getline( infile, s )) break;
+    istringstream ss( s );
+    vector <double> record;
+    while (ss) {
       string s;
-      if (!getline( infile, s )) break;
-      istringstream ss( s );
-      vector <double> record;
-      while (ss)
-	{
-	  string s;
-	  if (!getline( ss, s, ',' )) break;
-	  if (is_number(s)) {
-	    record.push_back( stod(s) );}
-	  else record.push_back( NAN );  // math.h
-	}
-      data.push_back( record );
+      if (!getline( ss, s, ',' )) break;
+      if (is_number(s)) {
+	record.push_back( stod(s) );}
+      else record.push_back( NAN );  // math.h
     }
-  if (!infile.eof())
-    {
-      std::cerr << "ERROR: No such file - " <<
-	file_name << std::endl;
-      exit(2);
-    }
+    data.push_back( record );
+  }
+  if (!infile.eof()) {
+    std::cerr << "ERROR: No such file - " <<
+      file_name << std::endl;
+    exit(2);
+  }
   return data;
 }
 
@@ -107,7 +100,7 @@ bool cppfunc::is_number(const std::string& s)
 }
 
 vector <int> cppfunc::remove_nan(vector <vector <double> > data,
-					      int num)
+				 int num)
 {
   vector <int> out;
   int security_len = data.size();

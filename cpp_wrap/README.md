@@ -1,9 +1,9 @@
-Wrapping C++ to python3
+C++ cython wrapper
 
-func.pyx to link:
-.cpp
-.h
-.pxd
+func.pyx to link:  
+.cpp  
+.h  
+.pxd  
 
-compilation:
-python3 setup.py build_ext --inplace
+compilation:  
+python3 setup.py build_ext --inplace  
