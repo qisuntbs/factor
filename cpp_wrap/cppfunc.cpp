@@ -1,3 +1,19 @@
+/*
+  Copyright (C) 2019, 2020 by Qi Sun
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+*/
+
 #include "./cppfunc.h"
 #include <math.h>
 #include <fstream>
@@ -94,13 +110,14 @@ vector <int> cppfunc::remove_nan(vector <vector <double> > data,
 					      int num)
 {
   vector <int> out;
-  int security_len = data.size();  // 2
-  int time_len = data[0].size();  // 3
+  int security_len = data.size();
+  int time_len = data[0].size();
   for (int i = 0; i < security_len; ++i) {
     int c = 0;
     for (int j = 0; j < time_len; ++j) {
       if (isnan(data[i][j])) c++;
     }
+    // remove ALL columns with nans by setting num = 1:
     if (c < num) out.push_back(i);
   }
   return out;

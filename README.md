@@ -1,10 +1,10 @@
 This is a mutli-factor testing framework.
 
-1. Need to get the price and fundamental data  
+1. Security price and fundamental data  
    * mlfactor as testing sample
-   * rewriting core functions in C++
-2. Write proper functions/classes to plug into this framework  
 3. Single factor testing enviorment (Low Vol, Value, etc.)  
 4. Multi-factor backtesting API  
 
-Copyright (2020/11): Qi Sun
+Copyright (C) 2019, 2020 by Qi Sun
+
+Licensed under the Apache License, Version 2.0 (the "License")
