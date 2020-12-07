@@ -30,9 +30,9 @@ class data_manipulate():
 
 class calc():
     @staticmethod
-    def cov(df):
+    def cov(df, number_of_periods=36):
         from cpp_wrap.cylink import cyfunc
-        # calculate historical TS 36M covariance matrix
+        # calculate historical 36M (default) covariance matrix
         # df - panel return data
         # df.shape = T * X (number of month * number of stocks)
         # np.cov(k)[0][0] = np.var(k[:,0], ddof=1)
@@ -42,8 +42,8 @@ class calc():
         stock_list = []
         ret_list = []
         # remove those stocks that has no historical 36M returns
-        for i in range(len_df - 36):
-            sample = df.iloc[i:i+36, :]
+        for i in range(len_df - number_of_periods):
+            sample = df.iloc[i:i+number_of_periods, :]
             sample_t = np.array(sample).T
             non_nan_list = cyfunc().remove_nan(sample_t, 1)
             stock_list.append(non_nan_list)
@@ -51,3 +51,12 @@ class calc():
             cov_list.append(np.cov(np.array(sample_non_nan).T))
             ret_list.append(sample_non_nan)
         return cov_list, stock_list, ret_list
+
+    @staticmethod
+    def shrunk_covariance(cov, delta):
+        # native covariance shrinkage
+        N = cov.shape[1]
+        mu = np.trace(cov) / N  # average of the matrix diagonals
+        F = np.identity(N) * mu
+        shrunk_cov = delta * F + (1 - delta) * cov
+        return shrunk_cov

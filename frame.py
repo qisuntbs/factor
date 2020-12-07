@@ -1,13 +1,14 @@
 # Main alpha class
 import pandas as pd
+from pypfopt import EfficientFrontier
 from funcs.calc import data_manipulate, calc
 
 
 class factor():
-    strate = None
-
     def __init__(self, space='US'):
         self.space = space
+        self.strate = None  # strategy
+        self.weights = []
         
     def get_data(self, addr=None):
         # here the input is highly structed data file
@@ -33,13 +34,20 @@ class factor():
         else:
             assert (False), "looking for attribute 'ret_data'"
 
+    def cov_shrinkage(self, delta=0.2):
+        from funcs.calc import calc
+        # TODO: implement more advanced shrinkage methods using pypfopt
+        # http://www.ledoit.net/honey.pdf
+        assert (hasattr(self, "cov_list")), "looking for attribute 'cov_list'"
+        self.delta = delta
+        self.cov_list_post_shrinkage = []
+        for cov in self.cov_list:
+            self.cov_list_post_shrinkage.append(calc.shrunk_covariance(cov, self.delta))
+
 
 class low_vol(factor):
-    strate = 'Low Volatility'
-    weights = []
-
     def lv_backtest(self):
-        from pypfopt import EfficientFrontier
+        self.strate = "Low Volatility"
 
         for i in range(len(self.cov_list)):
             sample_cov = pd.DataFrame(self.cov_list[i])
@@ -49,20 +57,6 @@ class low_vol(factor):
             self.weights.append(ef.min_volatility())
             # self.weights.append(ef.max_sharpe())
 
-        # x = []
-        # y = []
-        # i = 0
-        # import math
-        # for key, value in self.weights.items():
-        #     if value > 0.0001:
-        #         i += 1
-        #         x.append(i)
-        #         y.append(value)
-        #     if math.isnan(value):
-        #         print(value)
-        # util.plot(x, y)
-        # print(i, "stocks in the portfolio")
-
         # if hasattr(self, "cov_list"):
         #     # df = pd.DataFrame(self.stock_list[0])
         #     # self.cov_sample = risk_models.sample_cov(df)
@@ -70,14 +64,10 @@ class low_vol(factor):
         # else:
         #     assert (False), "run panel_cov to get cov/stock/ret_list"
 
-    def cov_shrinkage(self):
-        # TODO: implement basic covariance shrinkage
-        pass
 
-
-class single_factor_test(factor):
+class single_factor(factor):
     pass
 
 
-class multi_factor_opt(factor):
+class multi_factor(factor):
     pass

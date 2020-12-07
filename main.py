@@ -21,7 +21,7 @@ import time
 def run_test():
     from tests.test import test
     t = test("./tests/mlfdata.csv", "./tests/ret.csv")
-    t.get_ret_panel()
+    t.get_ret_panel(80)  # pick the first 80 stocks in the sample
     t.backtest()
     return t
 
@@ -30,6 +30,10 @@ if __name__ == '__main__':
     t = time.time()
 
     out = run_test()
-    # print(out.weights)
+
+    sample_ori_cov = out.cov_list[-200]
+    sample_updated_cov = out.cov_list_post_shrinkage[-200]
+    print(sample_ori_cov[0][:5])
+    print(sample_updated_cov[0][:5])
 
     print(time.time() - t, 'seconds taken')
