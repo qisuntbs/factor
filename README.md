@@ -6,5 +6,4 @@ This is a mutli-factor testing framework.
 4. Multi-factor backtesting API  
 
 TODO:  
-Cov Shrinkage
 single factor performance test
