@@ -1,4 +1,4 @@
-# Main alpha class
+# Main factor backtesting classes
 import pandas as pd
 from pypfopt import EfficientFrontier
 from funcs.calc import data_manipulate, calc

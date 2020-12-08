@@ -1,6 +1,7 @@
 virenv
 *~
-tests
 *pdf
 __pycache__
 var_desc.json
+setup.cfg
+mlfdata.csv
