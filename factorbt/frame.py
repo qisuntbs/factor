@@ -1,7 +1,7 @@
 # Main factor backtesting classes
 import pandas as pd
 from pypfopt import EfficientFrontier
-from funcs.calc import data_manipulate, calc
+from factorbt.calc import data_manipulate, calc
 
 
 class factor():
@@ -9,7 +9,7 @@ class factor():
         self.space = space
         self.strate = None  # strategy
         self.weights = []
-        
+
     def get_data(self, addr=None):
         # here the input is highly structed data file
         self.file_addr = addr
@@ -30,12 +30,14 @@ class factor():
             cov_list, stock_list, ret_list = calc.cov(self.ret_data)
             self.cov_list = cov_list  # cov_list generated
             self.stock_list = stock_list  # stock_list generated
-            self.ret_list = ret_list # return_list generated
+            self.ret_list = ret_list  # return_list generated
         else:
             assert (False), "looking for attribute 'ret_data'"
 
+    def risk_model(self):
+        pass
+
     def cov_shrinkage(self, delta=0.2):
-        from funcs.calc import calc
         # TODO: implement more advanced shrinkage methods using pypfopt
         # http://www.ledoit.net/honey.pdf
         assert (hasattr(self, "cov_list")), "looking for attribute 'cov_list'"

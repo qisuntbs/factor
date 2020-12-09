@@ -2,7 +2,7 @@
 # and generate multiple factor-based results
 # data: http://www.mlfactor.com/factor.html
 
-from frame import low_vol
+from factorbt.frame import low_vol
 
 
 class mlf_lv(low_vol):
@@ -20,7 +20,7 @@ class mlf_lv(low_vol):
 
     def get_ret_panel(self, number_of_stock=None) -> None:
         # update data to panel returns
-        from funcs.util import util
+        from factorbt.util import util
 
         if hasattr(self, "data"):
             print("obj has attribute 'data'")
