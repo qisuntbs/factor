@@ -38,8 +38,8 @@ class mlf_lv(low_vol):
         future_ret = future_ret.drop(future_ret.columns[0], axis=1)
         # self.ret_data = future_ret
         if number_of_stock is None:
-            print("Caution - you have chose full-sample data")
-            self.ret_data = future_ret
+            print("Caution - you have chosen full-sample data")
+            self.ret_data = future_ret.iloc[:40, :]
         elif number_of_stock > 10:
             print("We select the sample of the first", number_of_stock, "stocks only")
             self.ret_data = future_ret.iloc[:, :number_of_stock]

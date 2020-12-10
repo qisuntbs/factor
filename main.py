@@ -15,14 +15,12 @@ if __name__ == '__main__':
     t = time.time()
 
     out = mlfactor()
-
-    sample_ori_cov = out.cov_list[-200]
-    sample_cov_mfm = out.cov_list_mfm[-200]
-    sample_updated_cov = out.cov_list_post_shrinkage[-200]
-
-    N = 3
-    print(sample_ori_cov[:N][:N])
-    print(sample_cov_mfm[:N][:N])
-    print(sample_updated_cov[:N][:N])
+    cov = out.cov_list[0]
+    cov_s = out.cov_list_post_shrinkage[0]
+    from factorbt.risk import risk_model
+    cov_mfm = risk_model.statistical(None, cov)
+    print("cov:\n", cov[:5, :5])
+    print("cov_mfm:\n", cov_mfm[:5, :5])
+    print("cov_post_shrinkage:\n", cov_s[:5, :5])
 
     print(time.time() - t, 'seconds taken')

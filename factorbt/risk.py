@@ -1,13 +1,14 @@
 import numpy as np
+from scipy import linalg
 
 
 class risk_model():
+    # TODO: Add specific risk after decomposition
     # Class of the risk models
     # including: statistical, fundamental, and macro
     @staticmethod
     def statistical(raw_ret, cov=None, model_type="Statistical", K=7):
         # statistical risk model
-        # https://arxiv.org/pdf/1602.08070.pdf
         # K - Number of the principle components
         # Demean:
         if cov is None:
@@ -17,19 +18,13 @@ class risk_model():
             cov = np.cov(ret.T)
         # eigen decomposition derivation:
         # http://fourier.eng.hmc.edu/e176/lectures/algebra/node9.html
-        w, v = np.linalg.eig(cov)
+        # use scipy.linalg.eigh (instead of np.linalg.eig)
+        # to get rid of the complex number:
+        w, v = linalg.eigh(cov)
         w_index = w.argsort()[::-1]  # from largest to smallest
         w_first_K = w[w_index[:K]]
         v_first_K = v[:, w_index[:K]]
-        # V * diag(\lambda) * V.T
-        return np.matmul(np.matmul(v_first_K, np.diag(w_first_K)), v_first_K.T)
-
-
-# a = np.array([[1, 2, 4],
-#               [4, 4, 3],
-#               [1, 3, 5],
-#               [0, 5, 5]])
-# a_dm = a - a.mean(axis=0)
-# cov = np.cov(a_dm.T)
-# r = risk_model()
-# print(r.statistical(None, cov, None, 2))
+        # V * diag(\lambda) * V.T:
+        cov_eigen_decomp = np.matmul(np.matmul(v_first_K, np.diag(w_first_K)),
+                                     v_first_K.T)
+        return cov_eigen_decomp + np.diag(np.diag(cov) - np.diag(cov_eigen_decomp))
