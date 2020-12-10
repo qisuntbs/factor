@@ -49,5 +49,6 @@ class mlf_lv(low_vol):
     def backtest(self) -> None:
         # import numpy as np
         self.panel_cov()
+        self.riskmodel()
         self.cov_shrinkage(0.2)  # shrinkage parameter: 0.2
         self.lv_backtest()

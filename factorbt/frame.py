@@ -1,7 +1,23 @@
-# Main factor backtesting classes
+# -*- coding: utf-8 -*-
+#
+# Copyright (C) 2019, 2020 by Qi Sun
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 import pandas as pd
 from pypfopt import EfficientFrontier
 from factorbt.calc import data_manipulate, calc
+from factorbt.risk import risk_model
 
 
 class factor():
@@ -34,8 +50,12 @@ class factor():
         else:
             assert (False), "looking for attribute 'ret_data'"
 
-    def risk_model(self):
-        pass
+    def riskmodel(self, model_type="Statistical", K=7):
+        # bad name
+        self.cov_list_mfm = []
+        for cov in self.cov_list:
+            self.cov_list_mfm.append(risk_model.statistical(None, cov,
+                                                            model_type, K))
 
     def cov_shrinkage(self, delta=0.2):
         # TODO: implement more advanced shrinkage methods using pypfopt
@@ -43,7 +63,7 @@ class factor():
         assert (hasattr(self, "cov_list")), "looking for attribute 'cov_list'"
         self.delta = delta
         self.cov_list_post_shrinkage = []
-        for cov in self.cov_list:
+        for cov in self.cov_list_mfm:
             self.cov_list_post_shrinkage.append(calc.shrunk_covariance(cov, self.delta))
 
 
@@ -58,13 +78,6 @@ class low_vol(factor):
             ef = EfficientFrontier(mu, sample_cov)
             self.weights.append(ef.min_volatility())
             # self.weights.append(ef.max_sharpe())
-
-        # if hasattr(self, "cov_list"):
-        #     # df = pd.DataFrame(self.stock_list[0])
-        #     # self.cov_sample = risk_models.sample_cov(df)
-        #     self.ef = EfficientFrontier(0, self.cov_list[0])
-        # else:
-        #     assert (False), "run panel_cov to get cov/stock/ret_list"
 
 
 class single_factor(factor):

@@ -15,6 +15,7 @@ def get_factor():
     ret_data.index = list(date_list)
     f.ret_data = ret_data.iloc[:, :N]
     f.panel_cov()
+    f.riskmodel()
     f.cov_shrinkage()
     return f
 
@@ -34,4 +35,3 @@ class TestFactorFrame(unittest.TestCase):
         for i in range(len(f.cov_list)):
             self.assertEqual(f.cov_list[i].shape,
                              f.cov_list_post_shrinkage[i].shape)
-        
