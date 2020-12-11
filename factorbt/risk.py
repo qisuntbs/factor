@@ -3,11 +3,10 @@ from scipy import linalg
 
 
 class risk_model():
-    # TODO: Add specific risk after decomposition
-    # Class of the risk models
+    # BARRA-style risk models
     # including: statistical, fundamental, and macro
     @staticmethod
-    def statistical(raw_ret, cov=None, model_type="Statistical", K=7):
+    def statistical(raw_ret, cov=None, K=7):
         # statistical risk model
         # K - Number of the principle components
         # Demean:
@@ -27,4 +26,12 @@ class risk_model():
         # V * diag(\lambda) * V.T:
         cov_eigen_decomp = np.matmul(np.matmul(v_first_K, np.diag(w_first_K)),
                                      v_first_K.T)
+        # There is another approach:
+        # https://ocw.mit.edu/courses/mathematics/18-s096-topics-in-mathematics-with-applications-in-finance-fall-2013/lecture-notes/MIT18_S096F13_lecnote15.pdf
         return cov_eigen_decomp + np.diag(np.diag(cov) - np.diag(cov_eigen_decomp))
+
+    @staticmethod
+    def fundamental(raw_ret, factor_data):
+        # r = Xf + u
+        # cov = X * F * X.T + \Delta
+        pass

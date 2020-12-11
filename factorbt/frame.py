@@ -53,9 +53,15 @@ class factor():
     def riskmodel(self, model_type="Statistical", K=7):
         # bad name
         self.cov_list_mfm = []
-        for cov in self.cov_list:
-            self.cov_list_mfm.append(risk_model.statistical(None, cov,
-                                                            model_type, K))
+        if model_type == "Statistical":
+            for cov in self.cov_list:
+                self.cov_list_mfm.append(risk_model.statistical(None, cov, K))
+        elif model_type == "Fundamental":
+            for i in range(len(self.ret_list)):
+                self.cov_list_mfm.append(risk_model.fundamental(self.ret_list[i],
+                                                                self.cov_list[i]))
+        else:
+            assert (False), "Please specify the type of the risk model"
 
     def cov_shrinkage(self, delta=0.2):
         # TODO: implement more advanced shrinkage methods using pypfopt
