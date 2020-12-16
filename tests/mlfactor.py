@@ -39,12 +39,12 @@ class mlf_lv(low_vol):
         # self.ret_data = future_ret
         if number_of_stock is None:
             print("Caution - you have chosen full-sample data")
-            self.ret_data = future_ret.iloc[:40, :]
+            self.ret_data = future_ret
         elif number_of_stock > 10:
             print("We select the sample of the first", number_of_stock, "stocks only")
             self.ret_data = future_ret.iloc[:, :number_of_stock]
         else:
-            assert (False), "10 or more stocks" 
+            assert (False), "10 or more stocks"
 
     def backtest(self) -> None:
         # import numpy as np

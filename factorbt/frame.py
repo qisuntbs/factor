@@ -87,7 +87,19 @@ class low_vol(factor):
 
 
 class single_factor(factor):
-    pass
+    def insert_data_list(self, date_list, data_list):
+        self.date_list = date_list
+        self.data_list = data_list
+
+    def hml(self, factor, high_minus_low):
+        # 1) Fama_French high-low equally weighted returns
+        # 2) single factor cumulative IC
+        self.FF_return_list = []
+        self.factor_IC_list = []
+        for i in self.data_list:
+            ff_ret, ic = calc.port_sort_ret(i, factor, high_minus_low)
+            self.FF_return_list.append(ff_ret)
+            self.factor_IC_list.append(ic)
 
 
 class multi_factor(factor):

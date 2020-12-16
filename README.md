@@ -7,5 +7,8 @@ This is a mutli-factor testing framework.
 4. Multi-factor backtesting API  
 
 TODO:  
-Fundamental risk model  
-single factor performance test
+Fundamental risk model 
+Turnover  
+Better util.plot  
+
+2020/10 - Qi

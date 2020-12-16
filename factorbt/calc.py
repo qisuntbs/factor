@@ -60,3 +60,25 @@ class calc():
         F = np.identity(N) * mu
         shrunk_cov = delta * F + (1 - delta) * cov
         return shrunk_cov
+
+    @staticmethod
+    def port_sort_ret(df, factor, high_minus_low=True):
+        assert (type(df) == pd.DataFrame), "Looing for pd.DataFrame"
+        assert ('ret' in list(df.columns)), "missing col named 'ret'"
+        # sort the fundamental data to perform the test
+        # df represents cross-sectional data at
+        # ONE time point
+        stock_num = len(df)
+        pick_num = int(stock_num / 10 * 3)
+
+        sort_ind = True if high_minus_low is False else False
+
+        df = df.sort_values(by=factor, ascending=sort_ind)
+        # Fama-French 3/4/3 or 1/8/1 high-low return:
+        FF_return = df['ret'].iloc[:pick_num].mean() - \
+            df['ret'].iloc[-pick_num:].mean()
+        # full-sample ranking IC:
+        ret_order = np.array(df['ret']).argsort()[::-1].argsort()
+        FF_IC = np.corrcoef(np.array(range(len(df))),
+                            ret_order)[0, 1]
+        return FF_return, FF_IC
