@@ -7,7 +7,7 @@ This is a mutli-factor testing framework.
 4. Multi-factor backtesting API  
 
 TODO:  
-Fundamental risk model 
+Multiple frequencies with TC (Novy-Marx and Velikov 2014)  
 Turnover  
 Better util.plot  
 
